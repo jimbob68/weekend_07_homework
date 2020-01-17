@@ -1,28 +1,38 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="html">
+  <div class="">
+    <h1>World of Football</h1>
+    <!-- <footballers-list-item/> -->
+    <!-- </FootballersListItem> -->
   </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      footballers:[]
+    }
+  },
+
+mounted() {
+  fetch('https://www.scorebat.com/video-api/v1/')
+  .then(response => response.json())
+  .then(footballers => this.footballers = footballers);
+},
+components: {
+  // 'footballers-list-item' : FootballersListItem
+},
+
 }
+
+
+
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>
